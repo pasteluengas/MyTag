@@ -10,7 +10,9 @@ import eyed3
 from eyed3.id3.frames import ImageFrame
 from tkinter import filedialog
 from tkinter import ttk
+from PIL import Image, ImageTk
 import os
+
 
 thefiles = []
 
@@ -50,7 +52,28 @@ def search():
     album = root[0][0].text
     artist = root[0][1].text
     imagelink = root[0][8].text
+
+    AllAlbumInfo = Toplevel()
+    AllAlbumInfo.geometry("375x500")
+    AllAlbumInfo.title(album + " - " + artist)
+
     print(imagelink)
+    u = urlopen(imagelink)
+    raw_data= u.read()
+    u.close
+    photo= ImageTk.PhotoImage(data=raw_data)
+    label= tkinter.Label(AllAlbumInfo, image=photo)
+    label.image = photo
+    label.grid(row= 0, column= 0, padx=10, pady=10)
+
+    label2= tkinter.Label(AllAlbumInfo, text = album)
+    label2.grid(row= 3, column= 0, padx=10, pady=10)
+    label2.config(fg = "#1556A4", bg = "#FFFFFF", font = ("Roboto Light", 15))
+
+    label3= tkinter.Label(AllAlbumInfo, text = artist)
+    label3.grid(row= 4, column= 0, padx=10, pady=10)
+    label3.config(fg = "#1556A4", bg = "#FFFFFF", font = ("Roboto Light", 10))
+
     download_cover(imagelink)
     for track in root.iter('track'):
         nametrack = track.find('name').text
@@ -84,40 +107,49 @@ def search():
     #print(album + ", " + artist)
 
 app = tkinter.Tk()
-app.geometry("1000x500")
+app.geometry("600x500")
+app.title("MyTag")
 
-app.configure(bg='#1C003F')
+app.configure(bg='#FFFFFF')
 
 folder_path = StringVar()                                                                                                         
 
 chooseFolderlabel = Label(text="Seleccione la carpeta donde se encuentran los archivos de audio:")
 chooseFolderlabel.grid(row= 0, column= 0, padx=10, pady=10)
-chooseFolderlabel.config(fg = "White", bg = "#1C003F", font = ("Microsoft JhengHei Light", 15))
+chooseFolderlabel.config(fg = "#1556A4", bg = "#FFFFFF", font = ("Roboto Light", 15))
 
-button2 = Button(text="Browse", command=browse_button)
+
+button2 = Button(text="Abrir Carpeta", command=browse_button)
 button2.grid(row= 1, column= 0, padx=10, pady=10)
-button2.config(bg = "#4800A4", relief=SUNKEN, bd=0, fg="white", width="7", height="1", font = ("Microsoft JhengHei Light", 10))
+button2.config(bg = "#1556A4", relief=SUNKEN, bd=0, fg="#FFFFFF", width="11", height="1", font = ("Roboto Light", 10))
 lbl1 = Label(master=app,textvariable=folder_path)
 lbl1.grid(row= 2, column= 0, padx=10, pady=10)
-lbl1.config(fg = "White", bg = "#1C003F", font = ("Microsoft JhengHei Light", 9))
+lbl1.config(fg = "#1556A4", bg = "#FFFFFF", font = ("Roboto Light", 9))
 
 
 AlbumNameLabel = tkinter.Label(app, text="Nombre del album:")
 AlbumNameLabel.grid(row= 3, column= 0, padx=10, pady=10)
-AlbumNameLabel.config(fg = "White", bg = "#1C003F", font = ("Microsoft JhengHei Light", 15))
+AlbumNameLabel.config(fg = "#1556A4", bg = "#FFFFFF", font = ("Roboto Light", 15))
 
 searchAlbumEntry = tkinter.Entry(app, width=50)
+searchAlbumEntry.config(fg = "#000000", bg = "#FFFFFF", font = ("Roboto Light", 10))
 searchAlbumEntry.grid(row= 4, column= 0, padx=10, pady=10)
 
 ArtistNameLabel = tkinter.Label(app, text="Nombre del artista:")
 ArtistNameLabel.grid(row= 5, column= 0, padx=10, pady=10)
-ArtistNameLabel.config(fg = "White", bg = "#1C003F", font = ("Microsoft JhengHei Light", 15))
+ArtistNameLabel.config(fg = "#1556A4", bg = "#FFFFFF", font = ("Roboto Light", 15))
 
 searchArtistEntry = tkinter.Entry(app, width=50)
 searchArtistEntry.grid(row= 6, column= 0, padx=10, pady=10)
+searchArtistEntry.config(fg = "#000000", bg = "#FFFFFF", font = ("Roboto Light", 10))
 
 searchButton = Button(app, text= "Get Data", command= search)
 searchButton.grid(row= 7, column= 0, padx=10, pady=10)
-searchButton.config(bg = "#4800A4", relief=SUNKEN, bd=0, fg="white", width="12", height="1", font = ("Microsoft JhengHei Light", 15))
+searchButton.config(bg = "#1556A4", relief=SUNKEN, bd=0, fg="#FFFFFF", width="12", height="1", font = ("Roboto Light", 15))
+
+### SEGUNDA FILA
+
+#
+#CoverLabel = tkinter.Label(app, image=CoverImage).grid()
 
 app.mainloop()
