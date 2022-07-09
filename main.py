@@ -13,8 +13,20 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 import os
 
+app = tkinter.Tk()
+app.geometry("600x500")
+app.title("MyTag")
+app.configure(bg='#FFFFFF')
+app.iconbitmap("C:\\Users\\Usuario\\ico\\icon.ico")
 
 thefiles = []
+
+def create_label_console(w ,texts, color, size):
+
+    count = len(app.winfo_children())
+    label = tkinter.Label(w, text=f"-" + texts)
+    label.configure(foreground=color, font = ("Terminal", size), bg="#000000")
+    label.grid()
 
 def browse_button():
     global thefiles
@@ -37,11 +49,13 @@ def browse_button():
 
 def download_cover(url):
     f = open('cover.jpg','wb')
+    print(url)
     response = requests.get(url)
     f.write(response.content)
     f.close()
 
 def search():
+    songsWithoutFile = []
     album0 = searchAlbumEntry.get()
     artist0 = searchArtistEntry.get()
     album1 = album0.replace(' ','%20')
@@ -53,26 +67,23 @@ def search():
     artist = root[0][1].text
     imagelink = root[0][8].text
 
-    AllAlbumInfo = Toplevel()
-    AllAlbumInfo.geometry("375x500")
-    AllAlbumInfo.title(album + " - " + artist)
+    console = Toplevel()
+    console.geometry("640x310")
+    console.title(album + " - " + artist + " - Consola")
+    console.configure(bg='#000000')
+    console.iconbitmap("C:\\Users\\Usuario\\ico\\icon.ico")
+    
+    
 
-    print(imagelink)
-    u = urlopen(imagelink)
-    raw_data= u.read()
-    u.close
-    photo= ImageTk.PhotoImage(data=raw_data)
-    label= tkinter.Label(AllAlbumInfo, image=photo)
-    label.image = photo
-    label.grid(row= 0, column= 0, padx=10, pady=10)
-
-    label2= tkinter.Label(AllAlbumInfo, text = album)
-    label2.grid(row= 3, column= 0, padx=10, pady=10)
-    label2.config(fg = "#1556A4", bg = "#FFFFFF", font = ("Roboto Light", 15))
-
-    label3= tkinter.Label(AllAlbumInfo, text = artist)
-    label3.grid(row= 4, column= 0, padx=10, pady=10)
-    label3.config(fg = "#1556A4", bg = "#FFFFFF", font = ("Roboto Light", 10))
+    #print(imagelink)
+    #u = urlopen(imagelink)
+    #raw_data= u.read()
+    #u.close
+    #photo= ImageTk.PhotoImage(data=raw_data)
+    #label= tkinter.Label(console, image=photo)
+    #label.image = photo
+    #label.grid(row= 0, column= 0, padx=10, pady=10)
+    
 
     download_cover(imagelink)
     for track in root.iter('track'):
@@ -101,16 +112,21 @@ def search():
                     audiofile.initTag()
                 audiofile.tag.images.set(ImageFrame.FRONT_COVER, open('cover.jpg','rb').read(), 'image/jpeg')
                 audiofile.tag.save()
+
+                create_label_console(console, "Se encontró un archivo para " + nametrack, "green", 10)
+
             else:
-                hola = "hola"
-                #print("No se enontró archivo MP3 para " + nametrack)
-    #print(album + ", " + artist)
+                if nametrack in songsWithoutFile:
+                    print("amogus")
+                else:
+                    songsWithoutFile.append(nametrack)
+                    create_label_console(console, "No se encontró archivo MP3 para " + nametrack, "red", 10)
 
-app = tkinter.Tk()
-app.geometry("600x500")
-app.title("MyTag")
+    create_label_console(console, "Se le han aplicado las etiquetas a los archivos que encontramos", "green", 15)
 
-app.configure(bg='#FFFFFF')
+            
+            
+
 
 folder_path = StringVar()                                                                                                         
 
@@ -143,13 +159,12 @@ searchArtistEntry = tkinter.Entry(app, width=50)
 searchArtistEntry.grid(row= 6, column= 0, padx=10, pady=10)
 searchArtistEntry.config(fg = "#000000", bg = "#FFFFFF", font = ("Roboto Light", 10))
 
-searchButton = Button(app, text= "Get Data", command= search)
+searchButton = Button(app, text= "Asignar datos", command= search)
 searchButton.grid(row= 7, column= 0, padx=10, pady=10)
 searchButton.config(bg = "#1556A4", relief=SUNKEN, bd=0, fg="#FFFFFF", width="12", height="1", font = ("Roboto Light", 15))
 
-### SEGUNDA FILA
-
-#
-#CoverLabel = tkinter.Label(app, image=CoverImage).grid()
+Mark = Label(app, text='v0.5 Beta | PasteLuengas')
+Mark.grid(row=12, column=0, pady=100)
+Mark.config(fg = "#000000", bg = "#FFFFFF")
 
 app.mainloop()
