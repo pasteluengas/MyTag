@@ -18,7 +18,8 @@ MP3 file sorter by album
 ### 2. Set the album's name and artist's name
 ![Some Artist and Some Album](https://raw.githubusercontent.com/PasteLuengas/MyTag/main/images/sc3.PNG)
 
-###
+### 3. Click on the "Sed Data" Button, and... You have your songs sucefully listed
+![GG](https://raw.githubusercontent.com/PasteLuengas/MyTag/main/images/sc4.PNG)
 
 
 
