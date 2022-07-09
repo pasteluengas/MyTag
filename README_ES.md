@@ -5,8 +5,6 @@
 
 Ordena archivos MP3 por Album.
 
-[Descargar MyTag]([https://example.com](https://github.com/PasteLuengas/MyTag/releases/tag/Beta)): Version Beta 0.5
-
 ## Que puedo hacer con mytag?
 - Listar canciones en el orden del albm
 - Colocar una portada del album
