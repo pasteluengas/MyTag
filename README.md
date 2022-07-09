@@ -5,7 +5,7 @@
 
 MP3 file sorter by album
 
-[Download MyTag]([https://example.com](https://github.com/PasteLuengas/MyTag/releases/tag/Beta)): Version Beta 0.5
+[Download MyTag - Version Beta 0.5]([https://example.com](https://github.com/PasteLuengas/MyTag/releases/tag/Beta))
 
 ## What can MyTag do?
 - List files in order of album track list
