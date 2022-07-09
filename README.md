@@ -5,6 +5,8 @@
 
 MP3 file sorter by album
 
+[Technologie name](https://example.com): Version 12.3 
+
 ## What can MyTag do?
 - List files in order of album track list
 - Set the album cover
@@ -21,7 +23,7 @@ MP3 file sorter by album
 ### 3. Click on the "Sed Data" Button, and... You have your songs sucefully listed
 ![GG](https://raw.githubusercontent.com/PasteLuengas/MyTag/main/images/sc4.PNG)
 
-## ![#f03c15] Warnings
+Warnings
 - MyTag is in a Beta phase, there is not an stable version, if you have problems with MyTag, let me know
 - PIRACY IS ILEGAL, MyTag at no time encourages this practice
 
