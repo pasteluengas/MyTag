@@ -3,9 +3,10 @@
 ![License/Licencia](https://img.shields.io/github/license/PasteLuengas/MyTag)
 ![Version](https://img.shields.io/badge/Version-0.5-red)
 
-MP3 file sorter by album
+#### Nota: 
+Si buscas una version en español de este articulo, puedes ir al archivo <a href="https://github.com/PasteLuengas/MyTag/blob/main/README_ES.md">en español</a>
 
-[Download MyTag - Version Beta 0.5]([https://example.com](https://github.com/PasteLuengas/MyTag/releases/tag/Beta))
+MP3 file sorter by album
 
 ## What can MyTag do?
 - List files in order of album track list
