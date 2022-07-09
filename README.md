@@ -5,7 +5,7 @@
 
 MP3 file sorter by album
 
-##What can MyTag do?
+## What can MyTag do?
 - List files in order of album track list
 - Set the album cover
 - Set info. like the album name or the artist's name
