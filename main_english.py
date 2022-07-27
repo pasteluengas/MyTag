@@ -46,6 +46,11 @@ def create_label_console(w ,texts, color, size):
 def browse_button():
     global thefiles
     global filename
+    
+    #reestarts
+    thefiles = []
+    MinOneFile = False
+    
     # The directory is saved in folder_path
     global folder_path
     filename = filedialog.askdirectory()
@@ -149,15 +154,12 @@ def search():
 
         
 
-
-    #If the user don't select any folder
-    if str(folder_path) == "PY_VAR0":
-        create_label_console(console, "YOu didn't selected any folder", "red", 15)
+    print(str(folder_path))
     #If everything goes well
     if folder_path and MinOneFile:
         create_label_console(console, "The tags have been applied to the files we found", "green", 15)
     #If the folder don't have songs
-    if not folder_path != "PY_VAR0" and not MinOneFile:
+    if not MinOneFile:
         create_label_console(console, "We didn't find any song", "red", 15)
         
     

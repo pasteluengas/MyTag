@@ -48,6 +48,10 @@ def create_label_console(w ,texts, color, size):
 def browse_button():
     global thefiles
     global filename
+    
+    thefiles = []
+    MinOneFile = False
+    
     # El directorio se almacena en folder_path
     global folder_path
     filename = filedialog.askdirectory()
@@ -153,9 +157,6 @@ def search():
         
 
 
-    #Si el usuario no seleccionó ninguna carpeta
-    if str(folder_path) == "PY_VAR0":
-        create_label_console(console, "No seleccionaste ninguna carpeta", "red", 15)
     #Si todo salió bien
     if folder_path and MinOneFile:
         create_label_console(console, "Se le han aplicado las etiquetas a los archivos que encontramos", "green", 15)
