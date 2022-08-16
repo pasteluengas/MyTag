@@ -4,7 +4,7 @@
 ![Version](https://img.shields.io/badge/Version-1.0.0-red)
 
 #### Nota: 
-Si buscas una version en español de este articulo, puedes ir al archivo <a href="https://github.com/PasteLuengas/MyTag/blob/main/README_ES.md">en español</a>
+Si buscas una version en español de este esto, puedes ir al archivo <a href="https://github.com/PasteLuengas/MyTag/blob/main/README_ES.md">en español</a>
 
 MP3 file sorter by album
 
